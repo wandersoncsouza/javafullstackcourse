@@ -4,13 +4,13 @@ public class OrderItem {
     private Integer quantity;
     private Double price;
 
-    private Product products;
+    private Product product;
 
     public OrderItem(){}
-    public OrderItem(Integer quantity, Double price, Product products) {
+    public OrderItem(Integer quantity, Double price, Product product) {
         this.quantity = quantity;
         this.price = price;
-        this.products = products;
+        this.product = product;
     }
 
     public Integer getQuantity() {
@@ -26,12 +26,22 @@ public class OrderItem {
         this.price = price;
     }
     public Product getProducts() {
-        return products;
+        return product;
     }
-    public void setProducts(Product products) {
-        this.products = products;
+    public void setProducts(Product product) {
+        this.product = product;
     }
-    public Double subTotal(double price, int quantity){
+    public double subTotal(){
          return price * quantity;
+    }
+    @Override
+    public String toString(){
+        return getProducts().getName()
+                + ", $"
+                + String.format("%.2f", price)
+                + ", Quantity: "
+                + quantity
+                + ", Subtotal: $"
+                + String.format("%.2f", subTotal());
     }
 }
