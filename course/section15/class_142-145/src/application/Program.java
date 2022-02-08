@@ -32,16 +32,20 @@ public class Program {
             System.out.print("Enter the date of check-out (dd/MM/yyyy): ");
             checkout = sdf.parse(sc.next());
 
-            Date now = new Date();
-            if(checkin.before(now) || checkout.before(now)){
-                System.out.println("Error in reservation, the dates must be after current time");
-            }
-            else if(!checkout.after(checkin)){
-                System.out.println("Error in reservation: Check-out date nust be after check-in date.");
-            }else{
-                reservation.updateDates(checkin, checkout);
+            // PROBLEMA DE DELEGAÇAO. LOGICA DE VALIDAÇÃO DEVE SER REALIZADA NA CLASSE RESERVA
+            // Date now = new Date();
+            // if(!checkin.before(now) || checkout.before(now)){
+            //     System.out.println("Error in reservation, the dates must be after current time");
+            // }
+            // else if(!checkout.after(checkin)){
+            //     System.out.println("Error in reservation: Check-out date nust be after check-in date.");
+            
+            String error = reservation.updateDates(checkin, checkout);
+            if(error != null){
                 System.out.println("Reservation: " + reservation);
             }
+                
+            // FIM DO PROBLEMA
         }
         sc.close();
     }
