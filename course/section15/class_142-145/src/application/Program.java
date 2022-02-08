@@ -1,27 +1,27 @@
 package application;
 
 import java.util.Date;
+import java.rmi.UnexpectedException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 import entities.Reservation;
+import exceptions.DomainException;
 
 public class Program {
     public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.print("Enter the number of room: ");
-        int roomNumber = sc.nextInt();
-        System.out.print("Enter the date of check-in (dd/MM/yyyy): ");
-        Date checkin = sdf.parse(sc.next());
-        System.out.print("Enter the date of check-out (dd/MM/yyyy): ");
-        Date checkout = sdf.parse(sc.next());
+        try{
+            System.out.print("Enter the number of room: ");
+            int roomNumber = sc.nextInt();
+            System.out.print("Enter the date of check-in (dd/MM/yyyy): ");
+            Date checkin = sdf.parse(sc.next());
+            System.out.print("Enter the date of check-out (dd/MM/yyyy): ");
+            Date checkout = sdf.parse(sc.next());
 
-        if(!checkout.after(checkin)){
-            System.out.println("Error in reservation: Check-out date nust be after check-in date.");
-        }else{
             Reservation reservation = new Reservation(roomNumber, checkin, checkout);
             System.out.println("Reservation " + reservation);
 
@@ -32,21 +32,18 @@ public class Program {
             System.out.print("Enter the date of check-out (dd/MM/yyyy): ");
             checkout = sdf.parse(sc.next());
 
-            // PROBLEMA DE DELEGAÇAO. LOGICA DE VALIDAÇÃO DEVE SER REALIZADA NA CLASSE RESERVA
-            // Date now = new Date();
-            // if(!checkin.before(now) || checkout.before(now)){
-            //     System.out.println("Error in reservation, the dates must be after current time");
-            // }
-            // else if(!checkout.after(checkin)){
-            //     System.out.println("Error in reservation: Check-out date nust be after check-in date.");
-            
-            String error = reservation.updateDates(checkin, checkout);
-            if(error != null){
-                System.out.println("Reservation: " + reservation);
-            }
-                
-            // FIM DO PROBLEMA
+            reservation.updateDates(checkin, checkout);
+            System.out.println("Reservation: " + reservation);
+        }
+        catch(ParseException e){
+            System.out.println("Invalid date format.");
+        }
+        catch(DomainException e){
+            System.out.println("Error in reservation: " + e.getMessage());
+        }catch(RuntimeException e){
+            System.out.println("Unexpected Error");
         }
         sc.close();
+    
     }
 }
