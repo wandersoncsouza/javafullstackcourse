@@ -4,14 +4,9 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
-        String path = ("/Users/wandersoncs/Desktop/Cursos/java/Udemy/nelioalves/javafullstackcourse/course/section17/class_184_file_reader_buffer/src/file.txt");
-        FileReader fr = null;
-        BufferedReader br = null;
+        String path = ("/Users/wandersoncs/Desktop/Cursos/java/Udemy/nelioalves/javafullstackcourse/course/section17/class_185_try_with_resources/src/file.txt");
 
-        try {
-            fr = new FileReader(path);
-            br = new BufferedReader(fr);
-
+        try (BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
 
             while(line != null){
@@ -20,17 +15,6 @@ public class App {
             }
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        }finally{
-            try{
-                if(br != null){
-                    br.close();
-                }
-                if(fr != null){
-                    fr.close();
-                }
-            }catch(IOException e){
-                e.printStackTrace();
-            }
         }
     }
 }
