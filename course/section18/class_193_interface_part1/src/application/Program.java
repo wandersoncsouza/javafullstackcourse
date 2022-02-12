@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
-
 import entities.CarRental;
 import entities.Vehicle;
 import service.BrasilTaxService;
