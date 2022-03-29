@@ -2,7 +2,10 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+
 import entities.Product;
+import util.ProductPredicate;
 
 public class Program {
     public static void main(String[] args) {
@@ -23,7 +26,11 @@ public class Program {
         //list.removeIf(Product::staticProductPredicate);
 
         // Implementando usando method reference nonstatic (referencia para método não estatico)
-        list.removeIf(Product::nonStaticProductPredicate);
+        //list.removeIf(Product::nonStaticProductPredicate);
+
+        // Implementando com expressão lambda declarada
+        Predicate<Product> pred = p -> p.getPrice() >= 100;
+        list.removeIf(pred);
 
         // Predicato por meio de expresão lambda
         //list.removeIf(p -> p.getPrice() >= 100);
