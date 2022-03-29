@@ -29,11 +29,11 @@ public class Program {
         //list.removeIf(Product::nonStaticProductPredicate);
 
         // Implementando com expressão lambda declarada
-        Predicate<Product> pred = p -> p.getPrice() >= 100;
-        list.removeIf(pred);
+        //Predicate<Product> pred = p -> p.getPrice() >= 100;
+        //list.removeIf(pred);
 
         // Predicato por meio de expresão lambda
-        //list.removeIf(p -> p.getPrice() >= 100);
+        list.removeIf(p -> p.getPrice() >= 100);
 
         for(Product p : list){
             System.out.println(p);
