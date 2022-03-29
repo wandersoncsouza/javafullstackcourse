@@ -22,9 +22,14 @@ public class Program{
         list.add(new Product("Cadeira Gamer", 700.00));
         list.add(new Product("HD Case", 80.90));
         
-        // Implementação com interface
-        list.forEach(new PriceUpdate());
-        // reference method para o println
+        // // Implementação com interface
+        // list.forEach(new PriceUpdate());
+        // // reference method para o println
+        // list.forEach(System.out::println);
+
+
+        // Referencia de metodo estatico
+        list.forEach(Product::staticPriceUpdate);
         list.forEach(System.out::println);
     }
 }
