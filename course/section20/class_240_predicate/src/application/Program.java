@@ -19,8 +19,11 @@ public class Program {
         // Implementado por instanciação de uma interface funcional
         //list.removeIf(new ProductPredicate());
 
-        // Implementando usando method reference (referencia para método)
-        list.removeIf(Product::staticProductPredicate);
+        // Implementando usando method reference static (referencia para método)
+        //list.removeIf(Product::staticProductPredicate);
+
+        // Implementando usando method reference nonstatic (referencia para método não estatico)
+        list.removeIf(Product::nonStaticProductPredicate);
 
         // Predicato por meio de expresão lambda
         //list.removeIf(p -> p.getPrice() >= 100);
