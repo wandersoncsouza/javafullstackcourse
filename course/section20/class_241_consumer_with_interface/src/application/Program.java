@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 import entities.Product;
 import util.PriceUpdate;
@@ -29,7 +30,19 @@ public class Program{
 
 
         // Referencia de metodo estatico
-        list.forEach(Product::staticPriceUpdate);
+        // list.forEach(Product::staticPriceUpdate);
+        // list.forEach(System.out::println);
+
+        // Implementação com método não estatico
+        // list.forEach(Product::nonStaticPriceUpdate);
+        // list.forEach(System.out::println);
+
+
+        // expressão lambda declarada
+        Consumer<Product> cons = p -> {
+            p.setPrice(p.getPrice() * 1.1);
+        };
+        list.forEach(cons);
         list.forEach(System.out::println);
     }
 }
