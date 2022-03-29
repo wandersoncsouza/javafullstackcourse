@@ -3,7 +3,6 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import entities.Product;
-import util.ProductPredicate;
 
 public class Program {
     public static void main(String[] args) {
@@ -18,8 +17,10 @@ public class Program {
         list.add(new Product("HD Case", 80.90));
 
         // Implementado por instanciação de uma interface funcional
-        list.removeIf(new ProductPredicate());
+        //list.removeIf(new ProductPredicate());
 
+        // Implementando usando method reference (referencia para método)
+        list.removeIf(Product::staticProductPredicate);
 
         // Predicato por meio de expresão lambda
         //list.removeIf(p -> p.getPrice() >= 100);

@@ -22,6 +22,11 @@ public class Product {
         this.price = price;
     }
 
+    // Implementando usando method reference static (referencia para método estatico)
+    public static boolean staticProductPredicate(Product p){
+        return p.getPrice() >= 100;
+    }
+
     @Override
     public String toString() {
         return name + ", " + String.format("%.2f", price);
