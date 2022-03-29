@@ -39,10 +39,12 @@ public class Program{
 
 
         // expressão lambda declarada
-        Consumer<Product> cons = p -> {
-            p.setPrice(p.getPrice() * 1.1);
-        };
-        list.forEach(cons);
+        // Consumer<Product> cons = p -> {
+        //     p.setPrice(p.getPrice() * 1.1);
+        // };
+
+        // expressão lambda inline
+        list.forEach(p -> p.setPrice(p.getPrice() * 1.1));
         list.forEach(System.out::println);
     }
 }
