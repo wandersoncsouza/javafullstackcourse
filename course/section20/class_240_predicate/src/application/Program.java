@@ -32,7 +32,7 @@ public class Program {
         //Predicate<Product> pred = p -> p.getPrice() >= 100;
         //list.removeIf(pred);
 
-        // Predicato por meio de expresão lambda
+        // Predicato por meio de expresão lambda inline
         list.removeIf(p -> p.getPrice() >= 100);
 
         for(Product p : list){
